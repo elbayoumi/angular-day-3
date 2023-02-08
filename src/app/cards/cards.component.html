@@ -1,0 +1,17 @@
+<div class="cards row" >
+  <div class="card col-md-3 col-12" style="width: 17.3rem;" *ngFor="let product of products; let i=index ">
+    <img [src]="product.image" class="card-img-top" style="width: 100%; display: block;" [alt]="product.name">
+    <div class="card-body">
+      <h5 class="card-title" style="height: 4.5rem;">{{product.name}} </h5>
+      <div>
+        <p [ngStyle]="{'background-color':product.rate>3?'green':'red'}" class="rounded text-center text-light">Rait {{product.rate}}</p>
+      <div class="font-weight-light text-capitalize" *ngFor="let review of product.reviews"  ><p>{{review}} </p></div></div>
+      <p> count :{{product.count}}</p>
+      <!-- <p class="font-weight-light text-capitalize">{{product.reviews}}</p> -->
+      <a [routerLink]="product.count<=0?'/':'view-card'" [class]="product.count<=0?'btn btn-danger mb-5':'btn btn-primary mb-5' " [style]=" {'text-decoration':product.count<=0? 'line-through':'inherit'} " [ngStyle]="{'cursor':product.count<=0?'not-allowed':'allowed'}" >Add To Cart</a>
+      <p class="text-center">{{':' +product.price | converter }} ج.م</p>
+      <p class="text-center">{{product.createdAt|date:'M/d/yy'}}</p>
+
+    </div>
+  </div>
+</div>
